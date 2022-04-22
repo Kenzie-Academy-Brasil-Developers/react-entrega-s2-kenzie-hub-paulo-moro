@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Routes from './Routes';
+import Routes from '../src/Components/FormRegister';
+
 
 function App() {
-  const [auth, setAuth] = useState()
+  const [auth, setAuth] = useState(false)
 
   
   return (
     <div className="App">
-       <Routes/>   
+       <Routes auth={auth}/>   
     </div>
   );
 }
