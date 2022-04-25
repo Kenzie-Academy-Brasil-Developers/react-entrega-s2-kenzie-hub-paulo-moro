@@ -1,7 +1,8 @@
 import { Redirect } from "react-router-dom";
 import { Switch,Route } from "react-router-dom";
+import Home from "../Page/Home";
 import Login from "../Page/Login";
-import RegisterPage from "../Page/Register";
+import RegisterPage from "./../Page/Register";
 
 function Routes({auth}){
 
@@ -14,7 +15,7 @@ function Routes({auth}){
         {auth?<Redirect to={"/home"}/>:<Login/>}          
       </Route>
       <Route exact path={"/home"}>
-          
+          <Home/>
       </Route>
     </Switch>
   )

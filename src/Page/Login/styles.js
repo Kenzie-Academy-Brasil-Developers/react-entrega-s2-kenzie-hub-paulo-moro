@@ -54,7 +54,7 @@ export const StyledContainer = styled.main`
 export const StyledHeader = styled.header`
   display: flex;
   width: 295.83px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 100px;
   figure{

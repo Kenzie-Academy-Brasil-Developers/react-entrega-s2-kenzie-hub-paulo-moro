@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Routes from '../src/Components/FormRegister';
+import Routes from './Routes';
+
+
 
 
 function App() {

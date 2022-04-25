@@ -7,9 +7,9 @@ export const StyledContainer = styled.main`
   display: flex;
   flex-direction: column;
   width: 295.83px;
-  height: 568.47px;
   align-items: center;
   justify-content: space-around;
+  margin-bottom: 40px;
   h1{
     font-family: 'Inter';
     font-size: 14px;
@@ -28,8 +28,27 @@ export const StyledContainer = styled.main`
     line-height: 18px;
     color: #868E96;
   }
-  form{
-    height: 500px;
+  label{
+    margin-top: 20px;
+  }
+  button{
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  form+p{
+    font-family: 'Inter';
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #868E96;
+
+  }
+  p+button{
+    background-color: #868E96;
+    margin: 20px 0px 35px 0px;
+    border: #868E96;
   }
 `
 export const StyledHeader = styled.header`
