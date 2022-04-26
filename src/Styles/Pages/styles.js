@@ -52,11 +52,13 @@ export const StyledContainer = styled.main`
   }
 `
 export const StyledNav = styled.nav`
-  display: flex;
-  width: 295.83px;
+  display: flex;  
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  min-width: 295.83px;
+  max-width: 800px;
+  width: 85%;
   figure{
     height: 16.92294692993164px;
     width: 122.05999755859375px;

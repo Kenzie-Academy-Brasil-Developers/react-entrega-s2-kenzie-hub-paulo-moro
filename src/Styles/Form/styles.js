@@ -5,9 +5,7 @@ export const StyledForm = styled.form`
     display: flex;
     width: 270px;
     flex-wrap: wrap;
-    justify-content:center;
-    
-    
+    justify-content:center;    
 
     label{
         display: flex;

@@ -3,43 +3,49 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { StyledForm } from "../../Styles/Form/styles";
-import { StyledBtn } from "../../Styles/Button/styles";
+import { RegBTN, StyledBtn } from "../../Styles/Button/styles";
 
-import api from "../../Services/api";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { atualizarUserData } from "../../Services/api";
 
 
 
-function AddForm({token}){
+function AddForm({token, closeModal, setUserData, userData}){
   const schema = yup.object().shape({
     title:yup.string().required("Campo Obrigatório"),        
     status:yup.string().required("Campo obrigatório")    
   
   })
 
+
   const { register, handleSubmit, formState:{errors} } = useForm({    
     resolver:yupResolver(schema)
   })   
-  const addTech = async (data) =>{    
-    const header = {headers:{"Authorization":`Bearer ${token}`}}  
-    await api.post("/users/techs", data, header).catch((err)=>{
-      
-      if(err.message === "User Already have this technology created, you can only update it"){
-        toast.error("tech já existente, atualize a tech já existente")
-      }
 
-    }).then((response)=>{       
-      if(response.status === 201){
+  
+
+  const addTech = async (data) =>{    
+    
+    const header = {headers:{"Authorization":`Bearer ${token}`}}  
+    axios.post("https://kenziehub.herokuapp.com/users/techs", data, header).catch((err)=>{
+      toast.error("tech já existente, atualize a tech já existente")
+    }).then((response)=>{  
+      if(response && response.status === 201)     {   
         toast.success("Tech adicionada com sucesso")
-      }        
-    })
- 
+        atualizarUserData(userData, setUserData)
+        closeModal()
+        
+      }       
+    })   
   }
+ 
+  
   return(
     <StyledForm onSubmit={handleSubmit(addTech)} >
       <label>
         <p>Nome</p> {errors.title && <span>{errors.title.message}</span>}
-        <input type="text" {...register('title')} />
+        <input type="text" placeholder="Digite aqui a tecnologia" {...register('title')} />
       </label>
       <label>
         <p>Selecione o status</p> {errors.status && <span>{errors.status.message}</span>}
@@ -48,7 +54,7 @@ function AddForm({token}){
           <option value="Intermediário">Intermediário</option>
           <option value="Avançado">Avançado</option>
         </select>
-        <StyledBtn type="submit">Cadastrar Tecnologia</StyledBtn>
+        <RegBTN type="submit">Cadastrar Tecnologia</RegBTN>
       </label>
               
               

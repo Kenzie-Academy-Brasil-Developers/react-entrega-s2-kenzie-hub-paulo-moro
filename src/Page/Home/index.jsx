@@ -90,7 +90,7 @@ function Home({auth, setAuth, userData, setUserData, token }){
             <h1>Cadastrar tecnologia</h1>
             <button onClick={closeModal}>x</button>
           </section>
-          <AddForm token={token} />
+          <AddForm token={token} closeModal={closeModal} userData={userData} setUserData={setUserData} />
         </div>
       </StyledTechs>
       }
@@ -102,7 +102,7 @@ function Home({auth, setAuth, userData, setUserData, token }){
             <h1>Atualizar tecnologia</h1>
             <button onClick={closeModal}>x</button>
           </section>
-          <UpdateForm closeModal={closeModal} token={token} tech={tech}/>
+          <UpdateForm closeModal={closeModal} token={token} tech={tech} userData={userData} setUserData={setUserData}/>
         </div>
       </StyledTechs>
       }

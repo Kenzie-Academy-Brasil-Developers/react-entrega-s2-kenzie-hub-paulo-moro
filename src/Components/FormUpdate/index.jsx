@@ -1,14 +1,15 @@
 import * as yup from "yup"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
-import { StyledBtn } from "../../Styles/Button/styles";
+import { GreyBtn, SaveBTN, StyledBtn } from "../../Styles/Button/styles";
 import { StyledForm } from "../../Styles/Form/styles";
 
-import api from "../../Services/api";
+import api, { atualizarUserData } from "../../Services/api";
+import axios from "axios";
 
 
 
-function UpdateForm({closeModal, token, tech}){
+function UpdateForm({closeModal, token, tech, userData, setUserData}){
 
   const schema = yup.object().shape({
     title:yup.string().required("Campo Obrigatório"),        
@@ -23,22 +24,27 @@ function UpdateForm({closeModal, token, tech}){
     }
   })   
 
-  const updateTech = async (data)=>{
+  const updateTech = async (Data)=>{
+    delete Data.title
     const header = {headers:{"Authorization":`Bearer ${token}`}}  
-    const response = await api.put(`/users/techs/${tech[0].id}`, data, header)
+    const response = await api.put(`/users/techs/${tech[0].id}`, Data, header)
     .catch((err)=>{
       console.log(err)
     })
-    console.log(response)
+    
+    atualizarUserData(userData,setUserData)
+    
   }
 
-  const deleteTech = async (data)=>{
-    console.log(tech[0].id)
+  const deleteTech = ()=>{
+    
     const header = {headers:{"Authorization":`Bearer ${token}`}}  
-    const response = await api.delete(`/users/techs/${tech[0].id}`, data, header).catch((err)=>{
+    const response = axios.delete(`https://kenziehub.herokuapp.com/users/techs/${tech[0].id}`, header)
+    .catch((err)=>{
       console.log(err)
     })
-    console.log(response)
+
+    atualizarUserData(userData,setUserData)
     closeModal()
   }
 
@@ -58,8 +64,8 @@ function UpdateForm({closeModal, token, tech}){
         <option value="Avançado">Avançado</option>
       </select>
     </label>
-      <StyledBtn type="submit">Salvar alterações</StyledBtn>
-      <StyledBtn onClick={deleteTech}>Excluir</StyledBtn>
+      <SaveBTN type="submit">Salvar alterações</SaveBTN>
+      <GreyBtn onClick={()=>deleteTech()}>Excluir</GreyBtn>
     
     
   </StyledForm>

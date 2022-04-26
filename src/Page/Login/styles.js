@@ -35,6 +35,7 @@ export const StyledContainer = styled.main`
     margin-top: 40px;
     margin-bottom: 40px;
   }
+ 
   form+p{
     font-family: 'Inter';
     font-size: 10px;
@@ -50,6 +51,7 @@ export const StyledContainer = styled.main`
     margin: 20px 0px 35px 0px;
     border: #868E96;
   }
+  
 `
 export const StyledHeader = styled.header`
   display: flex;

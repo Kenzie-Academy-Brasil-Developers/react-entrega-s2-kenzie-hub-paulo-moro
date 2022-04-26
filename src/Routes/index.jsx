@@ -20,7 +20,7 @@ function Routes(){
     }
     
   },[])
- 
+  
 
   return(
     <Switch>
@@ -28,7 +28,7 @@ function Routes(){
         <RegisterPage/>
       </Route>
       <Route exact path={"/"}>
-        <Login auth={auth} setAuth={setAuth} setUserData={setUserData}/>          
+        <Login auth={auth} setAuth={setAuth} setUserData={setUserData} />          
       </Route>
       <Route exact path={"/home"}>
           <Home auth={auth}  setAuth={setAuth} setUserData={setUserData} userData={userData} token = {token}/>

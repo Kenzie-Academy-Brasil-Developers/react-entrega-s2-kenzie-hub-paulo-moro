@@ -6,7 +6,9 @@ export const StyledContainer = styled.main`
   background-color: #212529;
   display: flex;
   flex-direction: column;
-  width: 295.83px;
+  min-width: 295.83px;
+  max-width: 800px;
+  width: 95%;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 40px;
@@ -50,6 +52,7 @@ export const StyledContainer = styled.main`
     margin: 20px 0px 35px 0px;
     border: #868E96;
   }
+  
 `
 export const StyledHeader = styled.header`
   display: flex;
@@ -69,5 +72,8 @@ export const StyledHeader = styled.header`
     border: #212529;
     width: 79.54px;
     height: 25.58px;
+  }
+  button:hover{
+    background-color: #343B41;
   }
 `

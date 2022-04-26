@@ -19,9 +19,8 @@ function App() {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover        
-        />        
-      <ToastContainer />
+        pauseOnHover
+      />
       <Routes/>   
     </div>
   );

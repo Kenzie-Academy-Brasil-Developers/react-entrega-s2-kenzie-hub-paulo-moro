@@ -1,14 +1,17 @@
 import styled from "styled-components"
 
 export const UserSection = styled.section`
-    border-top: 1px solid #212529;
-    border-bottom: 1px solid #212529;;
-    background-color: #121214;
-    min-width: 320px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
-    flex-wrap: wrap;
+  border-top: 1px solid #212529;
+  border-bottom: 1px solid #212529;;
+  background-color: #121214;
+  min-width: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;    
+  flex-wrap: wrap;
+  min-width: 295.83px;
+  max-width: 800px;
+  width: 85%;
     h1{
       font-family: 'Inter';
       font-size: 14px;
@@ -27,16 +30,21 @@ export const UserSection = styled.section`
       color: #FFFFFF;
       border: none;
     }
+    button:hover{
+      background-color: #343B41;
+    }
 `
 
 export const StyledContainer = styled.main`
   background-color: #212529;
   display: flex;
   flex-direction: column;
-  width: 295.83px;
+  min-width: 295.83px;
+  max-width: 800px;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 40px;
+  width: 95%;
   h1{
     font-family: 'Inter';
     font-size: 14px;
@@ -81,6 +89,7 @@ export const StyledContainer = styled.main`
   ul{
     padding: 22px 19px;
     margin-top: 0px;
+    width: 85%;
     
   }
   li{
@@ -93,6 +102,12 @@ export const StyledContainer = styled.main`
     align-items: center;
     margin-top:16px;
     border-radius: 4.06066px;
+  }
+  li:hover{
+    background-color: #343B41;
+    span{
+      color: #F8F9FA;
+    }
   }
   li h2{
     font-family: 'Inter';
@@ -116,13 +131,16 @@ export const StyledContainer = styled.main`
 
   }
 `
+
 export const StyledNav = styled.nav`
   display: flex;
-  width: 320px;
   max-width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 100px;
+  min-width: 295.83px;
+  max-width: 800px;
+  width: 85%;
   figure{
     height: 16.92294692993164px;
     width: 122.05999755859375px;
@@ -136,12 +154,19 @@ export const StyledNav = styled.nav`
     width: 55.49px;
     height: 32px;
   }
+  button:hover{
+        background-color: #343B41;
+    }
 `
+
 export const StyledHeader = styled.header`
   display: flex;
-    justify-content: space-between;
-    align-items: center;    
-    flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;    
+  flex-wrap: wrap;
+  min-width: 295.83px;
+  max-width: 800px;
+  width: 85%;
 
   h1{
       font-family: 'Inter';
@@ -203,10 +228,10 @@ export const StyledTechs = styled.div`
     }
     form{
       background-color: #212529;
-      padding: 17px;
+      padding: 12px;
     }
     form label{
-      margin-top: 17px;
+      margin-top: 12px;
       flex-direction: row;
       flex-wrap: wrap;
       
@@ -224,10 +249,14 @@ export const StyledTechs = styled.div`
     }
     form p{
       color:#F8F9FA;
+      margin-left: 10px
     }
     label input{
       margin-top: 17px;
-      color: #F8F9FA;;
+      color: #F8F9FA;
+    }
+    label input:focus{
+      color: #F8F9FA;
     }
     form label select{
       margin-top: 17px;
@@ -238,9 +267,21 @@ export const StyledTechs = styled.div`
       color:#F8F9FA;
     }
    
-    button{
-      background-color: #FF577F;
+    button{      
       margin-top: 17px;
+      margin-left: 7px;
+      margin-right: 7px;
+            
+    }
+    select+button:hover{
+     background-color: #FF427F;
+
+    }
+    label+button:hover{     
+      background-color: #FF427F;
+    }
+    button+button:hover{
+      background-color: #343B41;
     }
  
 `
