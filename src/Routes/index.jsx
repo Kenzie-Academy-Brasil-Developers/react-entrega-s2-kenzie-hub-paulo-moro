@@ -1,10 +1,19 @@
-import { Redirect } from "react-router-dom";
+import { useEffect, useState } from 'react';
 import { Switch,Route } from "react-router-dom";
 import Home from "../Page/Home";
 import Login from "../Page/Login";
 import RegisterPage from "./../Page/Register";
 
-function Routes({auth}){
+function Routes(){
+  const [auth, setAuth] = useState(false)
+  useEffect(()=>{
+    const token = localStorage.getItem("@KenzieHub:token")
+    
+    if(token){
+      return setAuth(true)
+    }
+  },[])
+ 
 
   return(
     <Switch>
@@ -12,10 +21,10 @@ function Routes({auth}){
         <RegisterPage/>
       </Route>
       <Route exact path={"/"}>
-        {auth?<Redirect to={"/home"}/>:<Login/>}          
+        <Login auth={auth} setAuth={setAuth}/>          
       </Route>
       <Route exact path={"/home"}>
-          <Home/>
+          <Home auth={auth}  setAuth={setAuth}/>
       </Route>
     </Switch>
   )

@@ -7,7 +7,9 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 
-import axios from "axios"
+
+import api from "../../Services/api.js";
+import { toast } from "react-toastify";
 
 function FormRegister(){
   const history = useHistory()
@@ -17,7 +19,7 @@ function FormRegister(){
         email:yup.string().required("Campo Obrigatório").email("Formato de email incorreto"),
         bio:yup.string().required("Campo obrigatório"),
         contact:yup.string().required("Campo obrigatório"),
-        password:yup.string().required("Campo obrigatório").min(8, "A senha precisa ter 8 digitos").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{4,}$/,"Está faltando um caractere especial, ou um número ou uma letra maiuscula ou minuscula"),
+        password:yup.string().required("Campo obrigatório").min(6, "A senha precisa ter 6 digitos").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{4,}$/,"Está faltando um caractere especial, ou um número ou uma letra maiuscula ou minuscula"),
         confirmPassword:yup.string().required("Campo obrigatório").oneOf([yup.ref("password")],"A senha e a cofirmação não são iguais"), 
         course_module:yup.string().required("Campo obrigatório")      
       })
@@ -25,7 +27,7 @@ function FormRegister(){
     const { register, handleSubmit, formState:{errors} } = useForm({
       resolver:yupResolver(schema)
     }) 
-    const handleRegister = (data)=>{ 
+    const handleRegister = async (data)=>{ 
       
       const errorsIsEmpty = ()=>{
         for(let key in errors){
@@ -40,16 +42,17 @@ function FormRegister(){
       
       if(errorsIsEmpty){
         delete data.confirmPassword
-        axios.post("https://kenziehub.herokuapp.com/users", data)
-          .then((response)=>{
-            history.push("/")
-          })
-          .catch((err)=>{
-            console.log(err)
-          })
+
+        const response = await api.post("/users/",data).catch((err)=>{
+          console.log(err)
+          toast.error("Ops! Algo deu errado")
+        })
+        .then((resp)=>{
+          toast.success("Conta criada com sucesso!")
+          history.push("/")
+        })  
         
-      }
-      
+      }     
     
     }
   return(  

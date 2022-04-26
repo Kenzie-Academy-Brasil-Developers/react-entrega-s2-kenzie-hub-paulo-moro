@@ -1,17 +1,28 @@
-import { useEffect, useState } from 'react';
+
 import './App.css';
 import Routes from './Routes';
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify"
 
 
 
 function App() {
-  const [auth, setAuth] = useState(false)
 
-  
   return (
     <div className="App">
-       <Routes auth={auth}/>   
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover        
+        />        
+      <ToastContainer />
+      <Routes/>   
     </div>
   );
 }
