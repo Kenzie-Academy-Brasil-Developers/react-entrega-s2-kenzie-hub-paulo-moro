@@ -76,4 +76,7 @@ export const StyledForm = styled.form`
       color: #868E96;
       background-color: #343B41;
     }
+    fieldset{
+      border: none;
+    }
 `

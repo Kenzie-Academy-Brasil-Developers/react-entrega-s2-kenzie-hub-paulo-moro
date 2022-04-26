@@ -13,7 +13,7 @@ import {toast} from "react-toastify"
 
 
 
-function FormLogin({setAuth}){
+function FormLogin({setAuth, setUserData}){
   const history = useHistory()
  
     const schema = yup.object().shape({
@@ -40,9 +40,10 @@ function FormLogin({setAuth}){
       if(errorsIsEmpty){
         
         delete data.confirmPassword
+
         const response = await api.post("/sessions/",data)
         .catch((err)=>{
-          console.log(err)
+          
           toast.error("Login ou senha incorretos")
         })          
           const {user, token} = response.data
@@ -50,6 +51,7 @@ function FormLogin({setAuth}){
         localStorage.clear()
         localStorage.setItem("@KenzieHub:token", token)
         localStorage.setItem("@KenzieHub:user", JSON.stringify(user))
+        setUserData(user)
         setAuth(true)
         toast.success("Login bem sucedido")
           

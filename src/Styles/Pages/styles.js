@@ -51,7 +51,7 @@ export const StyledContainer = styled.main`
     border: #868E96;
   }
 `
-export const StyledHeader = styled.header`
+export const StyledNav = styled.nav`
   display: flex;
   width: 295.83px;
   justify-content: space-between;
@@ -70,4 +70,8 @@ export const StyledHeader = styled.header`
     width: 79.54px;
     height: 25.58px;
   }
+`
+
+export const StyledHeader = styled.header`
+
 `

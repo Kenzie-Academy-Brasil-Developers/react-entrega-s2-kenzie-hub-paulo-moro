@@ -19,16 +19,7 @@ export const UserSection = styled.section`
       color: #F8F9FA;
       margin-left: 12px;
     }
-    span{
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 9.59437px;
-      line-height: 18px;
-      color: #868E96;
-      margin-left: 12px;
-      margin-right: 45px;
-    }
+    
     button{
       margin-right: 13.8px;
       background-color: #212529;
@@ -125,7 +116,7 @@ export const StyledContainer = styled.main`
 
   }
 `
-export const StyledHeader = styled.header`
+export const StyledNav = styled.nav`
   display: flex;
   width: 320px;
   max-width: 100%;
@@ -145,6 +136,33 @@ export const StyledHeader = styled.header`
     width: 55.49px;
     height: 32px;
   }
+`
+export const StyledHeader = styled.header`
+  display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    flex-wrap: wrap;
+
+  h1{
+      font-family: 'Inter';
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #F8F9FA;
+      margin-left: 12px;
+    }
+    span{
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 9.59437px;
+      line-height: 18px;
+      color: #868E96;
+      margin-left: 12px;
+      margin-right: 45px;
+    }
 `
 
 export const StyledTechs = styled.div`
@@ -189,6 +207,20 @@ export const StyledTechs = styled.div`
     }
     form label{
       margin-top: 17px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+    }
+    form label span{
+      margin-left:10px;
+      font-family: 'Inter';
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #FF577F;
+      
     }
     form p{
       color:#F8F9FA;

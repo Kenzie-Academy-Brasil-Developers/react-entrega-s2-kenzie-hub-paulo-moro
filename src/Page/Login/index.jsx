@@ -3,7 +3,7 @@ import { StyledHeader } from "./styles.js"
 import FormLogin from "../../Components/FormLogin"
 import { Redirect } from "react-router-dom";
 
-function Login({auth,setAuth}){
+function Login({auth,setAuth,setUserData}){
 
  if(auth){
    return <Redirect to="/home"/>
@@ -15,7 +15,7 @@ function Login({auth,setAuth}){
           <img src={Logo} alt="Kenzie-hub" />
       </figure>    
       </StyledHeader>
-      <FormLogin setAuth={setAuth}/> 
+      <FormLogin setAuth={setAuth} setUserData={setUserData}/> 
         
     
     </>

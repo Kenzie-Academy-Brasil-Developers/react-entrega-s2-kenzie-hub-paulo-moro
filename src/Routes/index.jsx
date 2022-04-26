@@ -6,12 +6,19 @@ import RegisterPage from "./../Page/Register";
 
 function Routes(){
   const [auth, setAuth] = useState(false)
+  const [userData, setUserData] = useState({})
+  const [token, setToken] = useState('')
   useEffect(()=>{
-    const token = localStorage.getItem("@KenzieHub:token")
+
+    const storedToken = localStorage.getItem("@KenzieHub:token")
+       
+    setUserData(JSON.parse(localStorage.getItem("@KenzieHub:user"))) 
     
-    if(token){
-      return setAuth(true)
+    if(storedToken){
+      setToken(storedToken)
+      setAuth(true)
     }
+    
   },[])
  
 
@@ -21,10 +28,10 @@ function Routes(){
         <RegisterPage/>
       </Route>
       <Route exact path={"/"}>
-        <Login auth={auth} setAuth={setAuth}/>          
+        <Login auth={auth} setAuth={setAuth} setUserData={setUserData}/>          
       </Route>
       <Route exact path={"/home"}>
-          <Home auth={auth}  setAuth={setAuth}/>
+          <Home auth={auth}  setAuth={setAuth} setUserData={setUserData} userData={userData} token = {token}/>
       </Route>
     </Switch>
   )
