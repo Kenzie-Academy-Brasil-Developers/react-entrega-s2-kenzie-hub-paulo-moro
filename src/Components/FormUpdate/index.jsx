@@ -33,13 +33,13 @@ function UpdateForm({closeModal, token, tech, userData, setUserData}){
     })
     
     atualizarUserData(userData,setUserData)
-    
+    closeModal()
   }
 
   const deleteTech = ()=>{
     
     const header = {headers:{"Authorization":`Bearer ${token}`}}  
-    const response = axios.delete(`https://kenziehub.herokuapp.com/users/techs/${tech[0].id}`, header)
+    axios.delete(`https://kenziehub.herokuapp.com/users/techs/${tech[0].id}`, header)
     .catch((err)=>{
       console.log(err)
     })

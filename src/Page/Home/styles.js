@@ -161,9 +161,9 @@ export const StyledNav = styled.nav`
 
 export const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
-  align-items: center;    
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;    
+  flex-direction: column;
   min-width: 295.83px;
   max-width: 800px;
   width: 85%;
@@ -186,104 +186,106 @@ export const StyledHeader = styled.header`
       line-height: 18px;
       color: #868E96;
       margin-left: 12px;
-      margin-right: 45px;
+      margin-right: 12px;
     }
 `
 
 export const StyledTechs = styled.div`
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0,.5);
-      position: fixed;
-      top: 0px;
-      right: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  
-    section{
-      display: flex;
-      justify-content: space-between;
-      background-color: #343B41;
-      padding: 10px 16px 10px 16px;
-      border-radius: 3.20867px 3.20867px 0px 0px;
-      align-items: center;
-    }
-    section h1{
-      font-family: 'Inter';
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 19px;
-      letter-spacing: 0em;
-      text-align: left;
-      color: #FFFFFF;
-      margin: 0px;
-      
-    }
-    section button{
-      background-color: #343B41;
-      color: #FFFFFF;
-      border: none;
-      margin-top: 0px;
-    }
-    form{
-      background-color: #212529;
-      padding: 12px;
-    }
-    form label{
-      margin-top: 12px;
-      flex-direction: row;
-      flex-wrap: wrap;
-      
-    }
-    form label span{
-      margin-left:10px;
-      font-family: 'Inter';
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 19px;
-      letter-spacing: 0em;
-      text-align: left;
-      color: #FF577F;
-      
-    }
-    form p{
-      color:#F8F9FA;
-      margin-left: 10px
-    }
-    label input{
-      margin-top: 17px;
-      color: #F8F9FA;
-    }
-    label input:focus{
-      color: #F8F9FA;
-    }
-    form label select{
-      margin-top: 17px;
-      color:#F8F9FA;
-     
-    }
-    label select option{
-      color:#F8F9FA;
-    }
-   
-    button{      
-      margin-top: 17px;
-      margin-left: 7px;
-      margin-right: 7px;
-            
-    }
-    select+button:hover{
-     background-color: #FF427F;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0,.5);
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    }
-    label+button:hover{     
-      background-color: #FF427F;
-    }
-    button+button:hover{
-      background-color: #343B41;
-    }
- 
+section{
+  display: flex;
+  justify-content: space-between;
+  background-color: #343B41;
+  padding: 10px 16px 10px 16px;
+  border-radius: 3.20867px 3.20867px 0px 0px;
+  align-items: center;
+}
+section h1{
+  font-family: 'Inter';
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
+  margin: 0px;
+  
+}
+section button{
+  background-color: #343B41;
+  color: #FFFFFF;
+  border: none;
+  margin-top: 0px;
+}
+form{
+  background-color: #212529;
+  padding: 12px;
+}
+form label{
+  margin-top: 12px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+form label span{
+  margin-left:10px;
+  font-family: 'Inter';
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FF577F;
+  
+}
+form p{
+  color:#F8F9FA;
+  margin-left: 10px
+}
+label input{
+  margin-top: 17px;
+  color: #F8F9FA;
+}
+label input:focus{
+  color: #F8F9FA;
+}
+form label select{
+  margin-top: 17px;
+  color:#F8F9FA;
+  
+}
+label select option{
+  color:#F8F9FA;
+}
+
+button{      
+  margin-top: 17px;
+  margin-left: 7px;
+  margin-right: 7px;
+        
+}
+select+button:hover{
+  background-color: #FF427F;
+
+}
+label+button:hover{     
+  background-color: #FF427F;
+}
+button+button:hover{
+  background-color: #343B41;
+}
+@media(min-width:550px){
+  flex-direction: row;
+}
 `
 
 
