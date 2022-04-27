@@ -2,9 +2,11 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL:"https://kenziehub.herokuapp.com"
-})
+   
+  })
 
 export const atualizarUserData = (data, setUserData) =>{
+  console.log("atualiza")
   axios.get(`https://kenziehub.herokuapp.com/users/${data.id}`)
   .then((response)=>{          
     if(response.data){

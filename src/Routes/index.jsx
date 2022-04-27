@@ -8,6 +8,7 @@ function Routes(){
   const [auth, setAuth] = useState(false)
   const [userData, setUserData] = useState({})
   const [token, setToken] = useState('')
+    
   useEffect(()=>{
 
     const storedToken = localStorage.getItem("@KenzieHub:token")

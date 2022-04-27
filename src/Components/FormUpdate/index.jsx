@@ -16,7 +16,10 @@ function UpdateForm({closeModal, token, tech, userData, setUserData}){
     status:yup.string().required("Campo obrigatório")    
   
   })
-
+  const api = axios.create({
+    baseURL:"https://kenziehub.herokuapp.com",
+    headers: {"Authorization":`Bearer ${token}`}
+  }) 
   const { register, handleSubmit, formState:{errors} } = useForm({    
     resolver:yupResolver(schema),
     defaultValues:{
@@ -27,19 +30,20 @@ function UpdateForm({closeModal, token, tech, userData, setUserData}){
   const updateTech = async (Data)=>{
     delete Data.title
     const header = {headers:{"Authorization":`Bearer ${token}`}}  
-    const response = await api.put(`/users/techs/${tech[0].id}`, Data, header)
+    await api.put(`/users/techs/${tech[0].id}`, Data)
     .catch((err)=>{
       console.log(err)
     })
+    
     
     atualizarUserData(userData,setUserData)
     closeModal()
   }
 
-  const deleteTech = ()=>{
+  const deleteTech = async ()=>{
     
     const header = {headers:{"Authorization":`Bearer ${token}`}}  
-    axios.delete(`https://kenziehub.herokuapp.com/users/techs/${tech[0].id}`, header)
+    await api.delete(`/users/techs/${tech[0].id}`)
     .catch((err)=>{
       console.log(err)
     })
@@ -49,26 +53,28 @@ function UpdateForm({closeModal, token, tech, userData, setUserData}){
   }
 
   return(
-    <StyledForm onSubmit={handleSubmit(updateTech)} >
-    <label>
-      <p>Nome do Projeto</p>
-      <fieldset disabled>
-        <input type="text" {...register("title")} />
-      </fieldset>
-    </label>
-    <label>
-      <p>Selecione o status</p>
-      <select name="status"  {...register("status")}>
-        <option value="Iniciante">Iniciante</option>
-        <option value="Intermediário">Intermediário</option>
-        <option value="Avançado">Avançado</option>
-      </select>
-    </label>
-      <SaveBTN type="submit">Salvar alterações</SaveBTN>
-      <GreyBtn onClick={()=>deleteTech()}>Excluir</GreyBtn>
+    <>
     
-    
-  </StyledForm>
+      <StyledForm onSubmit={handleSubmit(updateTech)} >
+      <label>
+        <p>Nome do Projeto</p>
+        <fieldset disabled>
+          <input type="text" {...register("title")} />
+        </fieldset>
+      </label>
+      <label>
+        <p>Selecione o status</p>
+        <select name="status"  {...register("status")}>
+          <option value="Iniciante">Iniciante</option>
+          <option value="Intermediário">Intermediário</option>
+          <option value="Avançado">Avançado</option>
+        </select>
+      </label>
+      <SaveBTN type="submit">Salvar alterações</SaveBTN>    
+      <GreyBtn type="click" onClick={deleteTech}>Excluir</GreyBtn>  
+    </StyledForm>
+  
+  </>
   )
 }
 

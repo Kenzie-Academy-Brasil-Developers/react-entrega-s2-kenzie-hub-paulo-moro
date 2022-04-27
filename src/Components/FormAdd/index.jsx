@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { StyledForm } from "../../Styles/Form/styles";
-import { RegBTN, StyledBtn } from "../../Styles/Button/styles";
+import { RegBTN } from "../../Styles/Button/styles";
 
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -31,6 +31,7 @@ function AddForm({token, closeModal, setUserData, userData}){
     axios.post("https://kenziehub.herokuapp.com/users/techs", data, header).catch((err)=>{
       toast.error("tech já existente, atualize a tech já existente")
     }).then((response)=>{  
+      console.log(response)
       if(response && response.status === 201)     {   
         toast.success("Tech adicionada com sucesso")
         atualizarUserData(userData, setUserData)

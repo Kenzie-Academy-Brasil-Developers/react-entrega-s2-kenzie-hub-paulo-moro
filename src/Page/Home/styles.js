@@ -200,7 +200,7 @@ export const StyledTechs = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
 section{
   display: flex;
   justify-content: space-between;
@@ -220,6 +220,7 @@ section h1{
   margin: 0px;
   
 }
+
 section button{
   background-color: #343B41;
   color: #FFFFFF;
